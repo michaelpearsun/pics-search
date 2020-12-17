@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SearchHistory from './SearchHistory';
 
 
 export class SearchBar extends Component {  
@@ -6,17 +7,24 @@ export class SearchBar extends Component {
         super(props)
     
         this.state = {
-             term: ''
+            term: '',
+             history: [
+
+             ]
         }
     }
     
     onFormSubmit = (e) => {
         e.preventDefault();
         
-        this.props.onSubmit(this.state.term)
+        this.props.onSubmit(this.state.term);
+        this.setState({history: this.state.history.concat({term: this.state.term})});
+        console.log('onSubmit', this.props.onSubmit(this.state.term));
     }
 
     render() {
+        console.log('state', this.state.term);
+        console.log('onChange', this.onChange);
         return ( 
             <div className="ui segment">
                 <form onSubmit={this.onFormSubmit} className="ui form">
@@ -25,6 +33,9 @@ export class SearchBar extends Component {
                         <input type="text" value={this.state.term} onChange={(e) => this.setState({ term: e.target.value })} />
                     </div>
                 </form>
+                <div>
+                    <SearchHistory searchQuery={this.state.history}/>
+                </div>
             </div>
         )
     }
