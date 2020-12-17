@@ -25,7 +25,6 @@ class App extends Component {
     };
 
     render() {
-//        console.log(this.state.images);
         return (
             <div className="ui container" style={{marginTop: '10px'}}>
                 <SearchBar onSubmit={this.onSearchSubmit} />               

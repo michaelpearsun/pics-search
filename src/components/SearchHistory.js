@@ -4,13 +4,8 @@ export class SearchHistory extends Component {
     constructor(props) {
         super(props)
     
-       // this.handleQuery=this.handleQuery.bind(this);
     }
 
-    // handleQuery(props) {
-    //     this.setState({ state: props.searchQuery }, () => {})
-    //     console.log('history', this.state.history)
-    // }
     
     render() {
         console.log(this.props.searchQuery);
